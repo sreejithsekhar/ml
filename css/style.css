@@ -1,0 +1,32 @@
+body {
+    background-color: aliceblue;
+}
+
+.floatingContainer {
+    position: fixed;
+    bottom: 60px;
+    right: -500px;
+    /* right: -38px; */
+    display: flex;
+    align-items: center;
+}
+
+.floatingBtn {
+    background: teal;
+    padding: 10px;
+    color: white;
+    width: 10px;
+    word-wrap: break-word;
+}
+
+.fluidbox {
+    display: flex;
+    flex-wrap: wrap;
+    width: 500px;
+}
+
+.block-icon {
+    height: 100px;
+    width: 75px;
+    border: 1px solid black;
+}
