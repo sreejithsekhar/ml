@@ -1,0 +1,94 @@
+set nocompatible
+filetype off
+
+set term=screen-256color
+set list
+set listchars=tab:▸\ ,eol:¬
+
+" set the runtime path to include Vundel and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+Plugin 'VundleVim/Vundle.vim'
+
+" plugin for git
+Plugin 'tpope/vim-fugitive'
+
+" plugin for fold indent
+Plugin 'tmhedberg/SimpylFold'
+
+" plugin for auto indentation
+Plugin 'vim-scripts/indentpython.vim'
+
+" syntax checking
+" Plugin 'scrooloose/syntastic'
+
+" PEP8 checking
+Plugin 'nvie/vim-flake8'
+
+" NERDTree
+Plugin 'scrooloose/nerdtree'
+Plugin 'jistr/vim-nerdtree-tabs'
+
+" Powerline
+Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+
+" Color schemes
+Plugin 'flazz/vim-colorschemes'
+
+call vundle#end()
+filetype plugin indent on
+
+" split navigations
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+" enable folding
+set foldmethod=indent
+set foldlevel=99
+
+" enable folding with the spacebar
+nnoremap <space> za
+
+" see docstrings for folded code
+let g:SimpylFold_docstring_preview=1
+
+" Python
+"
+" PEP8 indentation
+au BufNewFile,BufRead *.py
+    \ set tabstop=4
+
+" Javascript indentation
+au BufNewFile,BufRead *.js, *.html, *.css
+    \ set tabstop=2
+    \ set softtabstop=2
+    \ set shiftwidth=2
+
+" utf8 support
+set encoding=utf-8
+
+" python code syntax highlighting
+let python_highlight_all=1
+syntax on
+
+" hide .pyc files in NerdTree
+let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
+
+" line numbering
+set nu
+
+" NerdTree shortcut
+map <C-n> :NERDTreeToggle<CR>
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+colorscheme molokai
+
+set t_Co=256
+
+set laststatus=2
+
+" C-s mapping
+inoremap <c-s> <Esc>:update<CR>
